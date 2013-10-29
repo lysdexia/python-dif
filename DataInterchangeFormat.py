@@ -1,5 +1,5 @@
 import os, sys, re, datetime, types
-__author__ = "doug.shawhan@gmail.com"
+__author__ = "Doug Shawhan <lysdexia@gmail.com>"
 __license__ = "GPL"
 """
 Read and write "Navy DIF" documents as defined at
@@ -175,7 +175,6 @@ class DIFReader(object):
 		# well, the headerish bit is okay
 		return [self.cellValue(dif_obj.next(), dif_obj.next()) for i in range(self.vectors)]
 
-
 	def cellValue(self, tv, cmt):
 		"""
 		Parse out value of the cell according to spec. Basically only
@@ -228,6 +227,7 @@ class DIFReader(object):
 			# we are a list of tuples
 			if isinstance(row, list):
 				row = self.dateTimeValueTuple(row, date_columns)
+				print row[4]
 
 			# we are a list of dictionaries
 			elif isinstance(row, dict):
@@ -236,7 +236,6 @@ class DIFReader(object):
 			# we are a list of class objects
 			else:
 				row = self.dateTimeValueClass(row, date_columns)
-
 
 	def dateTimeValueClass(self, row, date_columns):
 		"""
@@ -266,7 +265,6 @@ class DIFReader(object):
 
 		return row
 
-
 	def dateTimeValueDict(self, row, date_columns):
 		"""
 		Parse date time values from a dictionary row
@@ -281,7 +279,7 @@ class DIFReader(object):
 		"""
 		for col in row:
 			if col[0] in date_columns:
-				col = (col[0], self.dateTimeValue(col[1]))
+				row[row.index(col)] = (col[0], self.dateTimeValue(col[1]))
 		return row
 
 	def dateTimeValue(self, v):
