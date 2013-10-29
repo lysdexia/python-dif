@@ -1,7 +1,7 @@
 python-dif
 ==========
 
-Navy Data Interchange Format module. 
+Navy Data Interchange Format module. Filling a hole in your life.
 
 http://en.wikipedia.org/wiki/Data_Interchange_Format
 
