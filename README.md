@@ -12,24 +12,24 @@ Usage
 
 Depending on reader class DataInterchangeFormat can represent data in several different ways:
 
-# as a list of tuples
+## as a list of tuples
 dif = DataInterchangeFormat.DIFReader("./test.dif", first_row_keys=True)
 
-# as a list of dictionaries
+## as a list of dictionaries
 dif = DataInterchangeFormat.DIFDictReader("./test.dif", first_row_keys=True)
 
-# as a list of objects
+## as a list of objects
 dif = DataInterchangeFormat.DIFObjReader("./test.dif", first_row_keys=True)
 
 Reader classes can accept a string, a file path or a file-like object as input.
-# as a file path
+## as a file path
 dif = DataInterchangeFormat.DIFReader("./test.dif", first_row_keys=True)
 
-# as an open file
+## as an open file
 with open("./test.dif", "r") as f:
 	dif = DataInterchangeFormat.DIFReader(f, first_row_keys=True)
 
-# as a string
+## as a string
 with open("./test.dif", "r") as f:
 	dif = DataInterchangeFormat.DIFReader(f.read(), first_row_keys=True)
 
