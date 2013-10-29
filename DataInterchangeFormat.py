@@ -227,7 +227,6 @@ class DIFReader(object):
 			# we are a list of tuples
 			if isinstance(row, list):
 				row = self.dateTimeValueTuple(row, date_columns)
-				print row[4]
 
 			# we are a list of dictionaries
 			elif isinstance(row, dict):
