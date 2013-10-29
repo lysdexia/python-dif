@@ -103,12 +103,17 @@ Reader classes can accept a string, a file path or a file-like object as input.
 
 "Header" Row
 ------------
-To use your first row as keys, invoke with first_row_keys=True
+To use your first row as keys, invoke with first_row_keys=True.
+Invoking without first_row_keys will result in keys being named for the column index.
 
 DateTime Columns
 ----------------
 If you have python-dateutils installed (http://labix.org/python-dateutil), supply a list of columns that have date/time values to self.parseDates.
 
-	dif.parseDates(["dates"])
-
-Play with the tests to see how it works.
+	>>> import DataInterchangeFormat
+	>>> dif = DataInterchangeFormat.DIFObjReader("./tests/test.dif", first_row_keys=True)
+	>>> dif.sheet[0].dict
+	{'text': 'psychic', 'dates': '10/25/2013 19:21:51', 'boolean': True, 'errors': 'ERROR', 'numeric': 1}
+	>>> dif.parseDates(["dates"])
+	>>> dif.sheet[0].dict
+	{'text': 'psychic', 'dates': datetime.datetime(2013, 10, 25, 19, 21, 51), 'boolean': True, 'errors': 'ERROR', 'numeric': 1}
