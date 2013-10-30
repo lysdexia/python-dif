@@ -33,12 +33,6 @@ class DIFReader(object):
 		a path to a .dif file
 		a file-like object
 	"""
-	vectors = False
-	tuples = False
-	row_keys = False
-	first_row_keys = False
-	sheet = []
-
 	def __init__(self, dif_obj, first_row_keys=False, row_keys=False):
 		"""
 		Invoking with first_row_keys=True will take the first dif tuple as
@@ -51,6 +45,11 @@ class DIFReader(object):
 		enumerated column names.
 		["col0", "col1", "col2" ...]
 		"""
+		self.vectors = False
+		self.tuples = False
+		self.row_keys = False
+		self.first_row_keys = False
+		self.sheet = []
 
 		if first_row_keys:
 			if not isinstance(first_row_keys, bool):
