@@ -197,6 +197,8 @@ class DIFReader(object):
 				return False
 
 			# ignoring the chance of commas, since format should not use them
+			# I can totally hear your eyes rolling in their sockets, but
+			# the format should make this a valid test
 			if "." in value:
 				return float(value)
 
