@@ -97,18 +97,15 @@ class DIFReader(object):
 		"""
 		# are we being provided with a file-like object?
 		if isinstance(dif_obj, file):
-			#sys.exit("i'm a file")
 			return self.stream(dif_obj)
 
 		# must be a string, I'm thinking ...
 		if any([isinstance(dif_obj, unicode), isinstance(dif_obj, str)]):
 			if os.path.isfile(dif_obj):
-				#sys.exit("i'm an object")
 				f = open(dif_obj, "r")
 				return self.stream(f)
 
 		# well, this looks like a string.
-		#sys.exit("i'm an string")
 		return self.stream(dif_obj.strip().split("\n"))
 
 	def stream(self, dif_obj):
